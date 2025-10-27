@@ -1,13 +1,16 @@
 import requests
 
-url = "https://api.restful-api.dev/objects"
+url ="https://api.restful-api.dev/objects"
 
-response = requests.get(url)
+result = requests.get(url)
 
-if response.status_code == 200:
-    data = response.json()
+if result.status_code == 200:
+    data = result.json()
 
-    print("API called successfully...")
-    print(data)
+    print("API called successfully")
+    for item in data[:3]:
+        print("ID", item.get("id"))
+        print("name", item.get("name"))
+
 else:
-    print(f"Error {response.status_code}: {response.text}")    
+    print("API failed")
